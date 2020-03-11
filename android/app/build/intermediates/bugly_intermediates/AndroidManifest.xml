@@ -80,6 +80,6 @@
     <activity android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_01_T" android:launchMode="singleInstance" android:theme="@android:style/Theme.Translucent"/>
     <activity android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_02_T" android:launchMode="singleInstance" android:theme="@android:style/Theme.Translucent"/>
     <meta-data android:name="tinker_version" android:value="1.9.14.3"/>
-    <meta-data android:name="TINKER_ID" android:value="1.0.1_0311-11-06-23"/>
+    <meta-data android:name="TINKER_ID" android:value="1.0.1_0311-11-12-37"/>
   </application>
 </manifest>

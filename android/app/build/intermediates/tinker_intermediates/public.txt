@@ -1234,4 +1234,5 @@ io.tick.flutter_hotfixdemo:style/Widget.AppCompat.Toolbar = 0x7f0d015a
 io.tick.flutter_hotfixdemo:style/Widget.AppCompat.Toolbar.Button.Navigation = 0x7f0d015b
 io.tick.flutter_hotfixdemo:style/Widget.Compat.NotificationActionContainer = 0x7f0d015c
 io.tick.flutter_hotfixdemo:style/Widget.Compat.NotificationActionText = 0x7f0d015d
-io.tick.flutter_hotfixdemo:xml/provider_paths = 0x7f0f0000
+io.tick.flutter_hotfixdemo:xml/network_security_config = 0x7f0f0000
+io.tick.flutter_hotfixdemo:xml/provider_paths = 0x7f0f0001

@@ -1,5 +1,5 @@
-<manifest package="io.tick.flutter_hotfixdemo" android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0">
-  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="28"/>
+<manifest package="io.tick.flutter_hotfixdemo" android:versionCode="1" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.0">
+  <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="28"/>
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -7,9 +7,8 @@
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
-  <application android:name="io.tick.flutter_hotfixdemo.SampleApplication" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:icon="@mipmap/ic_launcher" android:label="flutter_hotfixdemo">
-    <activity android:name="io.tick.flutter_hotfixdemo.MainActivity" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:launchMode="singleTop" android:theme="@style/LaunchTheme" android:windowSoftInputMode="adjustResize">
-      <meta-data android:name="io.flutter.app.android.SplashScreenUntilFirstFrame" android:value="true"/>
+  <application android:name="io.tick.flutter_hotfixdemo.SampleApplication" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:icon="@mipmap/ic_launcher" android:label="flutter_hotfixdemo" android:networkSecurityConfig="@xml/network_security_config">
+    <activity android:name="io.tick.flutter_hotfixdemo.MainActivity" android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode" android:hardwareAccelerated="true" android:launchMode="singleTop" android:windowSoftInputMode="adjustResize">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
@@ -80,6 +79,6 @@
     <activity android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_01_T" android:launchMode="singleInstance" android:theme="@android:style/Theme.Translucent"/>
     <activity android:name="com.tencent.tinker.loader.hotplug.ActivityStubs$SIStub_02_T" android:launchMode="singleInstance" android:theme="@android:style/Theme.Translucent"/>
     <meta-data android:name="tinker_version" android:value="1.9.14.3"/>
-    <meta-data android:name="TINKER_ID" android:value="tinker_id_0311-11-12-37"/>
+    <meta-data android:name="TINKER_ID" android:value="tinker_id_0311-14-30-28"/>
   </application>
 </manifest>

@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.multidex.MultiDex;
@@ -44,9 +45,6 @@ public class SampleApplicationLike extends DefaultApplicationLike {
     @Override
     public void onCreate() {
         super.onCreate();
-        // flutter相关
-        FlutterMain.startInitialization(getApplication());
-        FlutterPatch.flutterPatchInit();
         // 设置是否开启热更新能力，默认为true
         Beta.enableHotfix = true;
         // 设置是否自动下载补丁，默认为true
@@ -59,11 +57,15 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         Beta.betaPatchListener = new BetaPatchListener() {
             @Override
             public void onPatchReceived(String patchFile) {
+                Log.i(TAG, "补丁下载地址" + patchFile);
                 Toast.makeText(getApplication(), "补丁下载地址" + patchFile, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDownloadReceived(long savedLength, long totalLength) {
+                Log.i(TAG, "onDownloadReceived" + String.format("%s %d%%",
+                        Beta.strNotificationDownloading,
+                        (int) (totalLength == 0 ? 0 : savedLength * 100 / totalLength)));
                 Toast.makeText(getApplication(),
                         String.format(Locale.getDefault(), "%s %d%%",
                                 Beta.strNotificationDownloading,
@@ -73,22 +75,26 @@ public class SampleApplicationLike extends DefaultApplicationLike {
 
             @Override
             public void onDownloadSuccess(String msg) {
+                Log.i(TAG, "补丁下载成功");
                 Toast.makeText(getApplication(), "补丁下载成功", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDownloadFailure(String msg) {
+                Log.i(TAG, "补丁下载失败");
                 Toast.makeText(getApplication(), "补丁下载失败", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onApplySuccess(String msg) {
+                Log.i(TAG, "补丁应用成功");
                 Toast.makeText(getApplication(), "补丁应用成功", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onApplyFailure(String msg) {
+                Log.i(TAG, "补丁应用失败");
                 Toast.makeText(getApplication(), "补丁应用失败", Toast.LENGTH_SHORT).show();
             }
 
@@ -105,6 +111,10 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         // Bugly.setAppChannel(getApplication(), channel);
         // 这里实现SDK初始化，appId替换成你的在Bugly平台申请的appId
         Bugly.init(getApplication(), "1093c73a0b", true);
+
+        // flutter相关
+        FlutterMain.startInitialization(getApplication());
+        FlutterPatch.flutterPatchInit();
     }
 
 

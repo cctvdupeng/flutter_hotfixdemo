@@ -123,8 +123,8 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         super.onBaseContextAttached(base);
         // you must install multiDex whatever tinker is installed!
         MultiDex.install(base);
-        ApplicationContextProvider.application = getApplication();
-        ApplicationContextProvider.context = getApplication();
+        ApplicationProvider.application = getApplication();
+        ApplicationProvider.context = getApplication();
 
         // TODO: 安装tinker
         Beta.installTinker(this);

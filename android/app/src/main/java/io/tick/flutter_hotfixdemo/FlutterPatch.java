@@ -18,6 +18,8 @@ import io.flutter.view.FlutterMain;
 public class FlutterPatch {
 
     private static final String TAG = "FlutterPatch";
+    // apk下面的lib目录下含有libapp.so的目录。
+    private static final String[] FLUTTER_ABIS = {"arm64-v8a", "armeabi-v7"};
 
     private FlutterPatch() {
     }
@@ -27,7 +29,7 @@ public class FlutterPatch {
             String abi = getAbi();
             String relativePath = "lib/" + abi;
             Log.e("FlutterPatch", "flutterPatchInit() relativePath  " + getAbi());
-            String libPath = findLibraryFromTinker(ApplicationContextProvider.context,
+            String libPath = findLibraryFromTinker(ApplicationProvider.context,
                     relativePath, "libapp.so");
             Log.e("FlutterPatch", "flutterPatchInit() called   " + libPath);
             Field field = FlutterMain.class.getDeclaredField("sAotSharedLibraryName");
@@ -39,11 +41,18 @@ public class FlutterPatch {
     }
 
     public static String getAbi() {
-        String abi;
+        String abi = null;
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             abi = Build.CPU_ABI;
         } else {
-            abi = Build.SUPPORTED_ABIS[0];
+            for (String v1 : Build.SUPPORTED_ABIS) {
+                for (String v2 : FLUTTER_ABIS) {
+                    if (v1.equals(v2)) {
+                        abi = v1;
+                        break;
+                    }
+                }
+            }
         }
         return abi;
     }

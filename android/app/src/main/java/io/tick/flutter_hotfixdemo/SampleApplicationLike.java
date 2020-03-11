@@ -104,7 +104,7 @@ public class SampleApplicationLike extends DefaultApplicationLike {
         // String channel = WalleChannelReader.getChannel(getApplication());
         // Bugly.setAppChannel(getApplication(), channel);
         // 这里实现SDK初始化，appId替换成你的在Bugly平台申请的appId
-        Bugly.init(getApplication(), "4ddf2cc4d7", true);
+        Bugly.init(getApplication(), "1093c73a0b", true);
     }
 
 

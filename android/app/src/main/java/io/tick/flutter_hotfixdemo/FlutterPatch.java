@@ -1,6 +1,7 @@
 package io.tick.flutter_hotfixdemo;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 
 import com.tencent.tinker.lib.tinker.Tinker;
@@ -23,8 +24,11 @@ public class FlutterPatch {
 
     public static void flutterPatchInit() {
         try {
+            String abi = getAbi();
+            String relativePath = "lib/" + abi;
+            Log.e("FlutterPatch", "flutterPatchInit() relativePath  " + getAbi());
             String libPath = findLibraryFromTinker(ApplicationContextProvider.context,
-                    "lib/arm64-v8a", "libapp.so");
+                    relativePath, "libapp.so");
             Log.e("FlutterPatch", "flutterPatchInit() called   " + libPath);
             Field field = FlutterMain.class.getDeclaredField("sAotSharedLibraryName");
             field.setAccessible(true);
@@ -32,6 +36,16 @@ public class FlutterPatch {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getAbi() {
+        String abi;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            abi = Build.CPU_ABI;
+        } else {
+            abi = Build.SUPPORTED_ABIS[0];
+        }
+        return abi;
     }
 
     public static String findLibraryFromTinker(Context context, String relativePath, String libName)

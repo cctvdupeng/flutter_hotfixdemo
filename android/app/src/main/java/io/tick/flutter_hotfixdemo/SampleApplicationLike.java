@@ -6,10 +6,9 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.support.multidex.MultiDex;
 import android.util.Log;
 import android.widget.Toast;
-
-import androidx.multidex.MultiDex;
 
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;

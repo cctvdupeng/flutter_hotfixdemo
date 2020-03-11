@@ -24,7 +24,7 @@ public class FlutterPatch {
     public static void flutterPatchInit() {
         try {
             String libPath = findLibraryFromTinker(ApplicationContextProvider.context,
-                    "lib/armeabi", "libapp.so");
+                    "lib/arm64-v8a", "libapp.so");
             Log.e("FlutterPatch", "flutterPatchInit() called   " + libPath);
             Field field = FlutterMain.class.getDeclaredField("sAotSharedLibraryName");
             field.setAccessible(true);

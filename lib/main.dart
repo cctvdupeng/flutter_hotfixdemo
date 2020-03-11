@@ -98,9 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.display1,
             ),
-/*            Text(
-              'This is new version test',
-            ),
             Text(
               'This is new version test',
             ),
@@ -112,7 +109,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               'This is new version test',
-            ),*/
+            ),
+            Text(
+              'This is new version test',
+            ),
           ],
         ),
       ),
